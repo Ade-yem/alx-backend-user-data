@@ -2,10 +2,9 @@
 """Encrypting passwords"""
 
 import bcrypt
-from typing import ByteString
 
 
-def hash_password(password: str) -> ByteString:
+def hash_password(password: str) -> bytes:
     """returns a salted, hashed password, which is a byte string"""
     return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
 

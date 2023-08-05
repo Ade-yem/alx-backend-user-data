@@ -9,7 +9,7 @@ import os
 import bcrypt
 
 
-def filter_datum(fields: list, redaction: str,
+def filter_datum(fields: List, redaction: str,
                  message: str, separator: str) -> str:
     """returns the log message obfuscated"""
     for field in fields:
