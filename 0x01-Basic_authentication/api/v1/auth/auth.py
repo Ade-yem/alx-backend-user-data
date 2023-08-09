@@ -12,6 +12,10 @@ class Auth:
         """returns False - path and excluded_paths"""
         if path is not None and path[-1] != '/':
             path += '/'
+        for excluded in excluded_paths:
+            if excluded.endswith('*'):
+                if path.startswith(excluded[:-1]):
+                    return False
         if excluded_paths is None or path not in excluded_paths or path is None or excluded_paths == []:
             return True
         return False
