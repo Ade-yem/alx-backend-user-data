@@ -40,9 +40,9 @@ class DB:
 
     def find_user_by(self, **kwargs):
         """find user by argument"""
-        users = self.__session.query(User)
+        users = self._session.query(User)
         for k, v in kwargs.items():
-            if k not in User.__dict__.keys():
+            if k not in User.__dict__:
                 raise InvalidRequestError
             for user in users:
                 if getattr(user, k) == v:
