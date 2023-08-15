@@ -30,14 +30,14 @@ class DB:
             DBSession = sessionmaker(bind=self._engine)
             self.__session = DBSession()
         return self.__session
-    
+
     def add_user(self, email: str, hashed_password: str) -> User:
         """adds a user to the database"""
         user = User(email=email, hashed_password=hashed_password)
         self._session.add(user)
         self._session.commit()
         return user
-    
+
     def find_user_by(self, **kwargs):
         """find user by argument"""
         try:
@@ -56,4 +56,3 @@ class DB:
                 raise ValueError
             setattr(user, key, value)
         self._session.commit()
-        
